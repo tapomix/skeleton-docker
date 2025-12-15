@@ -1,0 +1,18 @@
+# ide
+/.idea/
+/.vscode/
+
+# docker data
+/.docker/data/*
+!/.docker/data/.gitkeep
+
+# claude
+/CLAUDE.md
+/.claude/
+
+# config
+/.env
+/compose.override.yaml
+
+# misc
+/TODO.md
