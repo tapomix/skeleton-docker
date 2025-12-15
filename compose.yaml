@@ -1,0 +1,28 @@
+services:
+  new-service: # <-- EDIT ME
+    # image: XYZ:${SERVICE_VERSION} # ! FILL IMAGE NAME OR BUILD
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    user: ${UID}:${GID}
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      # ...
+      - TZ=${TZ}
+    # volumes:
+    #   - .docker/data:/ ...
+    networks:
+      - service-net
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${CONTAINER_NAME}-https.rule=Host(`${TRAEFIK_HOST}`)"
+      - "traefik.http.routers.${CONTAINER_NAME}-https.entrypoints=websecure"
+      - "traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port=${TRAEFIK_PORT}"
+
+networks:
+  service-net: # specific network name for this service
+    name: ${CONTAINER_NAME}
+  traefik-net: # local or vps traefik network
+    external: true
+    name: ${TRAEFIK_NET}
