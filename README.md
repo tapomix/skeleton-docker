@@ -47,6 +47,7 @@ This is a base template that needs to be adapted for each service you deploy.
 - **`compose.override.yaml`**: Create this file for local overrides (not tracked by git)
 - **`.docker/`**: Adapt this directory to store your service volumes (data, config, etc.)
 - **`README.md`**: Replace this file content with documentation specific to your service
+- **`CHANGELOG.md`**: Replace this file to track your service version history
 
 ## Resources
 
