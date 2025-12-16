@@ -33,7 +33,7 @@ cp .env.dist .env
 | `TRAEFIK_PORT` | Port exposed by the service for Traefik |
 | `UID` | User ID for file permissions (default: `1000`) |
 | `GID` | Group ID for file permissions (default: `1000`) |
-| `TZ` | Timezone (default: `Etc\Brussels`) |
+| `TZ` | Timezone (default: `Europe/Brussels`) |
 
 > **Note:** All variables are required.
 
