@@ -25,7 +25,7 @@ cp .env.dist .env
 ### Environment Variables
 
 | Variable | Description |
-|----------|-------------|
+| -------- | ----------- |
 | `CONTAINER_NAME` | Name of the Docker container |
 | `SERVICE_VERSION` | Docker image version to use (default: `latest`) |
 | `TRAEFIK_HOST` | Hostname for Traefik routing (default: `${CONTAINER_NAME}.docker.lan`) |
