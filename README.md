@@ -8,7 +8,7 @@ Copy the template from Github and specify a `PROJECT` name.
 Then reset the git history to start fresh.
 
 ```bash
-git clone git@github.com:tapomix/skeleton-docker.git PROJECT
+git clone https://github.com/tapomix/skeleton-docker.git PROJECT
 cd PROJECT
 rm -rf .git
 git init .
