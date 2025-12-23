@@ -16,8 +16,10 @@ services:
 
     # volumes:
     #   - .docker/data:/ ...
+
     networks:
-      - service-net
+      # - service-net
+      # - socket-proxy-net
       - traefik-net
     labels:
       - "traefik.enable=true"
@@ -26,8 +28,11 @@ services:
       - "traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port=${TRAEFIK_PORT}"
 
 networks:
-  service-net: # specific network name for this service
-    name: ${CONTAINER_NAME}
-  traefik-net: # local or vps traefik network
+  # service-net: # specific network name for this service
+  #   name: ${SERVICE_NET}
+  # socket-proxy-net:
+  #   external: true
+  #   name: ${SOCKET_PROXY_NET}
+  traefik-net: # public traefik network
     external: true
     name: ${TRAEFIK_NET}
