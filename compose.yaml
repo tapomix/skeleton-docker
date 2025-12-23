@@ -8,7 +8,8 @@ services:
       - no-new-privileges:true
     environment:
       # ...
-      - TZ=${TZ}
+      TZ: ${TZ}
+
     # volumes:
     #   - .docker/data:/ ...
     networks:
