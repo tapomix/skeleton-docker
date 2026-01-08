@@ -1,6 +1,6 @@
 services:
   new-service: # <-- EDIT ME
-    # image: XYZ:${SERVICE_VERSION} # ! FILL IMAGE NAME OR BUILD
+    image: <SERVICE-IMAGE>:${SERVICE_VERSION} # ! <-- FILL IMAGE (+ ADD BUILD IF NEEDED)
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
     user: ${UID}:${GID}
