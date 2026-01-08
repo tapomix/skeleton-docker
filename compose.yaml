@@ -32,6 +32,18 @@ services:
       retries: 3
       start_period: 30s
 
+    # # limit resources
+    # cpus: 0.5
+    # mem_limit: 256m
+    # pids_limit: 10
+
+    # # logging
+    # logging:
+    #   driver: json-file
+    #   options:
+    #     max-size: 10m
+    #     max-file: 3
+
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.${CONTAINER_NAME}-https.rule=Host(`${TRAEFIK_HOST}`)"
