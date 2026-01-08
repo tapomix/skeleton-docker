@@ -14,6 +14,9 @@ services:
       # ...
       TZ: ${TZ}
 
+    # secrets:
+    #   - service-secret
+
     # volumes:
     #   - .docker/data:/ ...
 
@@ -44,3 +47,7 @@ networks:
   traefik-net: # public traefik network
     external: true
     name: ${TRAEFIK_NET}
+
+# secrets:
+#   service-secret:
+#     file: .docker/.secrets/service-secret
