@@ -3,7 +3,16 @@
 
 All notable changes to this template will be documented in this file.
 
-@see <https://keepachangelog.com/>
+---
+
+## [1.0.3] - 2026-01-08
+
+### Added
+
+- Docker secrets support (commented template in compose.yaml)
+- Secrets documentation section in README
+- Resource limits support (cpus, mem_limit, pids_limit)
+- Logging configuration support (json-file driver)
 
 ## [1.0.2] - 2025-12-23
 
