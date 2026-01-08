@@ -14,5 +14,9 @@
 /.env
 /compose.override.yaml
 
+# secrets
+# /.docker/.secrets/*
+# !/.docker/.secrets/.gitkeep
+
 # misc
 /TODO.md
