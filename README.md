@@ -110,6 +110,34 @@ If your service needs access to the Docker socket, use a socket proxy instead of
     SOCKET_PROXY_NET=socket-proxy-${CONTAINER_NAME}
     ```
 
+### Secrets
+
+If your service needs sensitive data (passwords, API keys, etc.), use Docker secrets instead of environment variables for better security.
+
+1. Create your secret file in `.docker/.secrets/`.
+
+    ```bash
+    echo -n "my-secret-value" > .docker/.secrets/service-secret
+    ```
+
+2. Uncomment `secrets` (in both `services.*.secrets` and root `secrets` sections).
+
+    ```yaml
+    // compose.yaml or compose.override.yaml
+    services:
+      my-service:
+        # ...
+        secrets:
+          - service-secret
+        # ...
+
+    secrets:
+      service-secret:
+        file: .docker/.secrets/service-secret.ext
+    ```
+
+3. In your container, secrets are available at `/run/secrets/<secret-name>`.
+
 ## Resources
 
 - Docker Compose documentation : <https://docs.docker.com/compose/gettingstarted>
