@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD024 -->
 # Changelog
 
 All notable changes to this template will be documented in this file.
@@ -31,3 +32,10 @@ All notable changes to this template will be documented in this file.
 - Docker Compose configuration with Traefik integration
 - Environment variables template (`.env.dist`)
 - Documentation [README](README.md)
+
+---
+
+## About
+
+This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
+The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
