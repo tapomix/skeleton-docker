@@ -5,6 +5,22 @@ All notable changes to this template will be documented in this file.
 
 ---
 
+## [1.1.0] - 2026-01-18
+
+### Added
+
+- Documentation section "Traefik network label" explaining network override behavior
+
+### Changed
+
+- Declare `service-net` as external network (allows communication with services from other projects)
+- Rename `UID` and `GID` to `USER_ID` and `GROUP_ID` to avoid conflicts with reserved shell variables
+
+### Fixed
+
+- Fix deprecated `security_opt` syntax (use `=` instead of `:` as separator)
+- Remove final newline in files of secrets directory
+
 ## [1.0.3] - 2026-01-08
 
 ### Added
