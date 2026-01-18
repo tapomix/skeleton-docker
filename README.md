@@ -49,37 +49,58 @@ This is a base template that needs to be adapted for each service you deploy.
 - **`README.md`**: Replace this file content with documentation specific to your service
 - **`CHANGELOG.md`**: Replace this file to track your service version history
 
-### Multiple services
+### External services
 
-If your stack requires multiple services to communicate, it's possible with a common network shared by services.
+If your service needs to communicate with services from other projects (other compose.yaml files), use an external network. This network must be created manually and will remain available even when containers are stopped.
 
-1. Add a network (e.g., `service-net`) to connect them.
+1. Create the external network (once, on the host).
+
+    ```bash
+    docker network create my-service-net
+    # or, to isolate the network from external access:
+    docker network create --internal my-service-net
+    ```
+
+2. Uncomment `service-net` (in both `services.*.networks` and `networks` sections).
 
     ```yaml
     // compose.yaml or compose.override.yaml
     services:
-      service-A:
+      my-service:
         # ...
         networks:
-        - service-net
-        - traefik-net
-
-      service-B:
-        # ...
-        networks:
-        - service-net
+          - service-net
+          - traefik-net
 
     networks:
-      # ...
       service-net:
+        external: true
         name: ${SERVICE_NET}
+      # ...
     ```
 
-2. Uncomment + edit `SERVICE_NET`.
+3. Uncomment + edit `SERVICE_NET` to match the network name.
 
     ```dotenv
     // .env
-    SERVICE_NET=${CONTAINER_NAME}
+    SERVICE_NET=my-service-net
+    ```
+
+4. In other projects that need to communicate with this service, add the same external network configuration.
+
+    ```yaml
+    // other-project/compose.yaml
+    services:
+      other-service:
+        # ...
+        networks:
+          - my-service-net
+          # ...
+
+    networks:
+      my-service-net:
+        external: true
+      # ...
     ```
 
 ### Socket proxy
