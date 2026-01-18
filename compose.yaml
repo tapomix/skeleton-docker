@@ -52,6 +52,7 @@ services:
 
 networks:
   # service-net: # specific network name for this service
+  #   external: true
   #   name: ${SERVICE_NET}
   # socket-proxy-net:
   #   external: true
