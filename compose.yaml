@@ -46,6 +46,7 @@ services:
 
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=${TRAEFIK_NET}" # declare or force network for traefik docker provider
       - "traefik.http.routers.${CONTAINER_NAME}-https.rule=Host(`${TRAEFIK_HOST}`)"
       - "traefik.http.routers.${CONTAINER_NAME}-https.entrypoints=websecure"
       - "traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port=${TRAEFIK_PORT}"
