@@ -41,6 +41,21 @@ cp .env.dist .env
 
 This is a base template that needs to be adapted for each service you deploy.
 
+### Traefik network label
+
+The `traefik.docker.network` label explicitly tells Traefik which network to use to reach the service.
+
+```yaml
+labels:
+  - "traefik.docker.network=${TRAEFIK_NET}"
+```
+
+**Why is this necessary?**
+
+Traefik's Docker provider can have a default network configured (e.g., `traefik-sites`). Services on this default network don't need the label. However, if your service uses a different network (e.g., `traefik-tools`), the label overrides the default for this specific container.
+
+This label is also useful when a container is connected to multiple networks (e.g., `traefik-net` + `service-net`). Without it, Traefik iterates over the container's networks in a non-deterministic order and may pick one where it's not connected, causing connection failures.
+
 ### Required modifications
 
 - **`compose.yaml`**: Complete the image name (or build configuration), volumes, and additional environment variables as needed
