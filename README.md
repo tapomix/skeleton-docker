@@ -34,8 +34,10 @@ cp .env.dist .env
 | `TRAEFIK_NET` | **Yes** | Traefik network name (default: *`traefik-net`*) |
 | `TRAEFIK_PORT` | **Yes** | Port exposed by the service for Traefik |
 | `TZ` | **Yes** | Timezone (default: *`Etc/UTC`*) |
-| `UID` | **Yes** | User ID for file permissions (default: *`1000`*) |
-| `GID` | **Yes** | Group ID for file permissions (default: *`1000`*) |
+| `USER_ID` | **Yes** | User ID for file permissions (default: *`1000`*) |
+| `GROUP_ID` | **Yes** | Group ID for file permissions (default: *`1000`*) |
+
+> **Note:** `USER_ID` and `GROUP_ID` are used instead of `UID` and `GID` because the latter are reserved shell variables in bash. Using `UID`/`GID` in `.env` would cause issues when sourcing the file in shell scripts, as these variables cannot be overwritten.
 
 ## Usage
 
