@@ -3,7 +3,7 @@ services:
     image: <SERVICE-IMAGE>:${SERVICE_VERSION} # ! <-- FILL IMAGE (+ ADD BUILD IF NEEDED)
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
-    user: ${UID}:${GID}
+    user: ${USER_ID}:${GROUP_ID}
     security_opt:
       - no-new-privileges=true
     read_only: true
